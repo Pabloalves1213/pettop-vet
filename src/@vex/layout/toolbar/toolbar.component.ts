@@ -18,6 +18,7 @@ import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 import { PopoverService } from '../../components/popover/popover.service';
 import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import icSearch from '@iconify/icons-ic/twotone-search';
+import { ModalReceituarioComponent } from '../../../app/views/pages/modal/modal-receituario/modal-receituario.component';
 
 @Component({
   selector: 'vex-toolbar',
@@ -25,6 +26,7 @@ import icSearch from '@iconify/icons-ic/twotone-search';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  [x: string]: any;
 
   @Input() mobileQuery: boolean;
 
@@ -54,9 +56,9 @@ export class ToolbarComponent implements OnInit {
   icArrowDropDown = icArrowDropDown;
 
   constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private navigationService: NavigationService,
-              private popoverService: PopoverService) { }
+    private configService: ConfigService,
+    private navigationService: NavigationService,
+    private popoverService: PopoverService) { }
 
   ngOnInit() {
   }
@@ -93,4 +95,15 @@ export class ToolbarComponent implements OnInit {
   openSearch() {
     this.layoutService.openSearch();
   }
+
+  modalReceituario() {
+    const dialogRef = this.dialog.open(ModalReceituarioComponent);
+    dialogRef.afterClosed().subscribe(result => {
+          console.log(result);
+          if (result) {
+          }
+        });
+  }
+  
+  
 }
