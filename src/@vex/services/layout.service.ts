@@ -8,6 +8,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   providedIn: 'root'
 })
 export class LayoutService {
+  openModalReceiturario() {
+    throw new Error('Method not implemented.');
+  }
 
   private _quickpanelOpenSubject = new BehaviorSubject<boolean>(false);
   quickpanelOpen$ = this._quickpanelOpenSubject.asObservable();

@@ -3,40 +3,26 @@
     <mat-icon [icIcon]="icMenu"></mat-icon>
   </button>
 
-  <a *ngIf="isVerticalLayout$ | async"
-     [routerLink]="['/']"
-     class="ltr:mr-4 rtl:ml-4 block"
-     fxLayout="row"
-     fxLayoutAlign="start center">
-    <img class="w-8 select-none" src="assets/img/demo/logo.svg">
-    <h1 [fxHide]="mobileQuery" class="title ltr:pl-4 rtl:pr-4 m-0 select-none">VEX</h1>
-  </a>
-
-  <button *ngIf="isHorizontalLayout$ | async"
-          [fxHide]="mobileQuery"
-          [matMenuTriggerFor]="addNewMenu"
-          color="primary"
-          mat-raised-button
-          type="button">ADD NOVO
+  <button *ngIf="isHorizontalLayout$ | async" [fxHide]="mobileQuery"  color="primary"
+    mat-raised-button type="button">Add Receituario
+  </button>
+  <button *ngIf="isHorizontalLayout$ | async" [fxHide]="mobileQuery" color="primary"
+    mat-raised-button type="button" (click)="modalReceituario()">add Cliente
+  </button>
+  <!-- <button mat-menu-item>
+    <mat-icon [icIcon]="icPersonAdd"></mat-icon>
+    <span>Add Cliente</span>
   </button>
 
-  <mat-menu #addNewMenu="matMenu" [overlapTrigger]="false" xPosition="after" yPosition="below">
-    <button mat-menu-item>
-      <mat-icon [icIcon]="icPersonAdd"></mat-icon>
-      <span>Add Cliente</span>
-    </button>
+  <button mat-menu-item (click)="modalReceituario()">
+    <mat-icon [icIcon]="icDoneAll"></mat-icon>
+    <span>Add Receituario</span>
+  </button> -->
 
-    <button mat-menu-item>
-      <mat-icon [icIcon]="icDoneAll"></mat-icon>
-      <span>Add Task</span>
-    </button>
+  <mat-menu #addNewMenu="matMenu" [overlapTrigger]="false" xPosition="after" yPosition="below">
   </mat-menu>
-  <div *ngIf="(isVerticalLayout$ | async) && isNavbarInToolbar$ | async"
-       [fxHide]="mobileQuery"
-       class="px-gutter"
-       fxFlex="none"
-       fxLayout="row"
-       fxLayoutAlign="start center">
+  <div *ngIf="(isVerticalLayout$ | async) && isNavbarInToolbar$ | async" [fxHide]="mobileQuery" class="px-gutter"
+    fxFlex="none" fxLayout="row" fxLayoutAlign="start center">
     <vex-navigation-item *ngFor="let item of navigationItems" [item]="item"></vex-navigation-item>
   </div>
 
@@ -44,8 +30,8 @@
 
   <div class="-mx-1 flex items-center">
     <div class="px-1">
-       <button (click)="openQuickpanel()" mat-icon-button type="button">  <!-- adicionar calendario nesse local  -->
-        <mat-icon [icIcon]="icBookmarks"></mat-icon> 
+      <button (click)="openQuickpanel()" mat-icon-button type="button"> <!-- adicionar calendario nesse local  -->
+        <mat-icon [icIcon]="icBookmarks"></mat-icon>
       </button>
     </div>
     <div class="px-1">
@@ -58,4 +44,4 @@
 </div>
 
 <vex-navigation *ngIf="(isVerticalLayout$ | async) && isNavbarBelowToolbar$ | async"
-                [fxHide]="mobileQuery"></vex-navigation>
+  [fxHide]="mobileQuery"></vex-navigation>
